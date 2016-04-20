@@ -4,7 +4,6 @@ body {
 	font-weight: bold;
 	color: white;
 	text-align: center;
-	width: 100%;
 }
 
 h1 {
@@ -37,4 +36,21 @@ h2 {
 
 .digit img:hover {
 	opacity: 1;
+}
+
+#control {
+	border-style: none;
+	width: 100%;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	padding: 0px;
+}
+
+button {
+	text-align: center;
+	width: 130px;
+	height: 60px;
+	border-radius: 5px;
+	font-size: 25pt;
+	font-family: Helvetica, Arial, sans-serif;
 }

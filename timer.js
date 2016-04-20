@@ -1,6 +1,8 @@
 (function() {
 	"use strict";
 
+	var lastTime;
+
 	window.onload = function(){
 		var addBtn = document.querySelectorAll(".add");
 		for(var i = 0; i < addBtn.length; i++){
@@ -11,59 +13,35 @@
 		for(var i = 0; i < decreaseBtn.length; i++){
 			decreaseBtn[i].onclick = decreaseTime;
 		}
+
+		document.getElementById("Start").onclick = startTimer;
+		document.getElementById("Pause").onclick = pauseTimer;
+		document.getElementById("Restart").onclick = restartTimer;
 	};
 
 	function addTime(){
 		var update = parseInt(this.parentElement.getElementsByTagName("SPAN")[0].innerHTML) + 1;
 		var digits = this.parentElement.parentElement.querySelectorAll(".digit");
-		if(Array.from(digits).indexOf(this.parentElement) % 2){
-			carryOn(this, update, digits);
-		}else{
-			convertTime(this, update, digits);
-		}
-	}
-
-	function carryOn(element, update, digits){
-		if(update < 10){
-				element.parentElement.getElementsByTagName("SPAN")[0].innerHTML = update;
-			}else{
-				element.parentElement.getElementsByTagName("SPAN")[0].innerHTML = 0;
-				digits[Array.from(digits).indexOf(element.parentElement) - 1].getElementsByTagName("SPAN")[0].innerHTML =
-					parseInt(digits[Array.from(digits).indexOf(element.parentElement) - 1].getElementsByTagName("SPAN")[0].innerHTML) + 1;
-			}
-	}
-
-	function convertTime(element, update, digits){
-		if(update < 6){
-			element.parentElement.getElementsByTagName("SPAN")[0].innerHTML = update;
-		}else{
-			element.parentElement.getElementsByTagName("SPAN")[0].innerHTML = 0;
-				digits[Array.from(digits).indexOf(element.parentElement) - 1].getElementsByTagName("SPAN")[0].innerHTML =
-					parseInt(digits[Array.from(digits).indexOf(element.parentElement) - 1].getElementsByTagName("SPAN")[0].innerHTML) + 1;
-		}
+		this.parentElement.getElementsByTagName("SPAN")[0].innerHTML = Math.min(9, update);
 	}
 
 	function decreaseTime(){
-		console.log(parseInt(this.parentElement.getElementsByTagName("SPAN")[0].innerHTML));
 		var update = parseInt(this.parentElement.getElementsByTagName("SPAN")[0].innerHTML) - 1;
-		var digits = this.parentElement.parentElement.querySelectorAll(".digit");
-		decrease(this, update, digits);
+		this.parentElement.getElementsByTagName("SPAN")[0].innerHTML = Math.max(0, update);
 	}
 
-	function decrease(element, update, digits){
-		if(update > -1){
-			element.parentElement.getElementsByTagName("SPAN")[0].innerHTML = update;
-		}else{
-			if(Array.from(digits).indexOf(element.parentElement) % 2){
-				unitBack(element, update, digits);
-			}else{
-				roundDown(element, update, digits);
-			}
-		}
+	function startTimer(){
+		lastTime = correctTime();
+		//update the timer on the panel
+		document.getElementById("Start").disabled = true;
+		document.getElementById("Pause").disabled = false;
+		document.getElementById("Restart").disabled = false;
 	}
 
-	function unitBack(element, update, digits){}
+	function correctTime(){}
 
-	function roundBDown(element, update, digits){}
+	function pauseTimer(){}
+
+	function restartTimer(){}
 
 })();
