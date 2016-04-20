@@ -44,12 +44,26 @@
 	}
 
 	function decreaseTime(){
+		console.log(parseInt(this.parentElement.getElementsByTagName("SPAN")[0].innerHTML));
 		var update = parseInt(this.parentElement.getElementsByTagName("SPAN")[0].innerHTML) - 1;
 		var digits = this.parentElement.parentElement.querySelectorAll(".digit");
-		if(Array.from(digits).indexOf(this.parentElement) % 2){
-			//if it is the tenth
+		decrease(this, update, digits);
+	}
+
+	function decrease(element, update, digits){
+		if(update > -1){
+			element.parentElement.getElementsByTagName("SPAN")[0].innerHTML = update;
 		}else{
-			//if the ones
+			if(Array.from(digits).indexOf(element.parentElement) % 2){
+				unitBack(element, update, digits);
+			}else{
+				roundDown(element, update, digits);
+			}
 		}
 	}
+
+	function unitBack(element, update, digits){}
+
+	function roundBDown(element, update, digits){}
+
 })();
