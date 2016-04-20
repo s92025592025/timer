@@ -1,0 +1,40 @@
+body {
+	background-color: #1d47c3;
+	font-size: 80pt;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	width: 100%;
+}
+
+h1 {
+	font-size: 40pt;
+}
+
+h2 {
+	font-size:15pt;
+}
+
+#display_panel {
+	width: 100%;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#display_panel > div {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.digit img , .digit span{
+	float: left;
+	clear: both;
+}
+
+.digit img {
+	opacity: 0.5;
+}
+
+.digit img:hover {
+	opacity: 1;
+}
